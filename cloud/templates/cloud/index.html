@@ -1,0 +1,61 @@
+{%extends "cloud/base.html"%}
+{%load static%}
+
+<link href="{% static 'style.css' %}" rel="stylesheet"}>
+{%block content%}
+
+
+<div class="container" style="left:50%; width:1280px;">
+
+    <form method="GET", action="{% url 'show-cloud'%}">
+        <div class="input-group col-sm-4 mt-3 ms-3" style="max-width:400px">
+            <input type="text" class="form-control" placeholder="Word" aria-label="Word" aria-describedby="basic-addon1" name="query" value="{{request.GET.query}}">
+            <button class="btn btn-primary" type="submit">Click me</button>
+        </div>
+    </form>
+
+    <div class="gridbox">
+        
+        <div class="container mt-3">
+            <ul class="cloud">
+                {% for item in lst %}
+                    <li style="font-size: {{item.1}}">{{item.0}}</li>
+                {%endfor%}
+            </ul>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <!-- <img src="..." class="card-img-top" alt="..."> -->
+            <div class="card-header">
+                <h5 class="card-title">Word catcher</h5>
+            </div>
+            <div class="card-body">            
+            <p class="card-text" style="font-size:large">Find words associated with your product. Useful for finding domain names.</p>
+            </div>
+
+            <div class="card-footer mt-5">
+                <h5 class="card-title">Recent searches</h5>
+            </div>
+
+            <ul class="list-group">
+                {% for item in recent_searches %}
+                    <li class="list-group-item"><a href="{%url 'show-cloud'%}?query={{item.word}}">{{item.word}}</a></li>
+                {%endfor%}
+            </ul>
+            <!-- <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+            </div> -->
+        </div>
+        <!-- <div class="container">
+            <ul class="list-group">
+                {% for item in recent_searches %}
+                    <li class="list-group-item"><a href="{%url 'show-cloud'%}?query={{item.word}}">{{item.word}}</a></li>
+                {%endfor%}
+            </ul>
+        </div> -->
+
+    
+
+    </div>
+</div>
+{%endblock%}

@@ -1,0 +1,27 @@
+ul.cloud {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    line-height: 2rem;
+    
+}
+
+ul.cloud li {
+    padding: 0.25rem 0.25rem;
+    text-decoration: none;
+    position: relative;
+}
+
+
+.gridbox {
+    display: grid;
+    /* grid-template-rows: auto; */
+    padding: 2em;
+    grid-template-columns: 7fr 3fr;
+    grid-gap: 2em;
+    /* justify-items:start; */
+    align-items: start;
+}
